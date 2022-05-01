@@ -1,1 +1,0 @@
-javascript:"use strict";!function(){"true"===document.body.getAttribute("contenteditable")?(document.body.setAttribute("contenteditable",!1),alert("网页不能编辑啦！")):(document.body.setAttribute("contenteditable",!0),alert("网页可以编辑啦！"))}();
