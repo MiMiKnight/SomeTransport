@@ -1,0 +1,47 @@
+# Git生成多个密钥对
+
+# 命令模板
+ssh-keygen -t rsa -C "邮箱@公司.com" -f ~/.ssh/<公司名>-id-rsa -P "密码"
+
+# 生成GitHub平台密钥
+ssh-keygen -t rsa -C "victor2015yhm@gmail.com" -f ~/.ssh/github-id-rsa -P "HNNUjsjx1"
+
+# 生成Gitee平台密钥
+ssh-keygen -t rsa -C "victor2015yhm@gmail.com" -f ~/.ssh/gitee-id-rsa -P "HNNUjsjx1"
+
+# 生成Gitlab平台密钥
+ssh-keygen -t rsa -C "victor2015yhm@gmail.com" -f ~/.ssh/gitlab-id-rsa -P "HNNUjsjx1"
+
+# 参数说明
+Host github.com            				#host别名，使用ssh时按此匹配配置
+    HostName github.com     			#真实主机地址（域名｜IP）
+	Port 22								#端口号
+    AddKeysToAgent yes      			#使用ssh时自动添加私钥到ssh-agent（不启用的话需要按方式一手动添加）
+    UseKeychain yes         			#使用钥匙串填充密码（等同于--apple-use-keychain）（此选项钥有问题，不配置）
+    PreferredAuthentications publickey  #使用公钥认证而不是账号密码
+    IdentityFile ~/.ssh/id_ed25519 		#证书文件（私钥）
+
+
+# .ssh文件夹下新建config配置文件（案例）
+============================================================
+# 配置指定Github平台使用的密钥
+Host github.com
+    HostName github.com
+	Port 22
+    AddKeysToAgent yes
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/github-id-rsa
+	
+# 配置指定Gitee平台使用的密钥
+Host gitee.com
+    HostName gitee.com
+	Port 22
+    AddKeysToAgent yes
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/gitee-id-rsa
+============================================================
+
+# 使用 ssh -T 测试配置是否成功
+ssh -T git@github.com
+ssh -T git@gitee.com
+ssh -T git@gitlab.com
