@@ -1,0 +1,19 @@
+# git log操作
+
+## git log
+查看所有的提交记录
+
+## git log --graph
+显示分支合并记录图
+
+## git log -n 查看最近第n次提交记录
+### 查看最近第1次提交记录
+git log -1
+## 查看距离最近的2次提交
+git log -2
+
+## 根据作者信息查找提交记录
+git log --author <作者模糊查询名称>
+
+## 根据提交这信息查找提交记录
+git log --committer <作者模糊查询名称>
