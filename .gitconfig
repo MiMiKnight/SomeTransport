@@ -1,0 +1,43 @@
+[user]
+	# 设置用户名
+	name = Jack
+	# 设置邮箱
+	email = victor2015yhm@gmail.com
+[commit]
+	# 设置提交模板文件位置
+	template = E:/SoftWorspace/GitWorkspace/template/commit.template
+[alias] # 给git命令起别名
+	# 只显示最近的一次提交记录命令别名设置
+	last = log -1
+	graph = log --graph --all
+	mergenoff = merge --no-ff
+	mergeSquash = merge --squash  
+	addall = add --all .
+	commitall = commit --all
+	# 查看当前工作区代码与当前暂存区的差异
+	diffWorkStage = difftool
+	# 查看当前工作区代码与当前版本库的差异
+	diffWorkHead = difftool HEAD
+	# 查看当前暂存区与当前版本库之间的差异
+	diffStageHead = difftool --cached HEAD
+[core]
+	# 设置git默认编辑器
+	editor = D:/DevelopProgram/VSCode/VSCode-win32-x64-1.69.0/Code.exe --extensions-dir E:/SoftWorspace/VSCodeExtensions
+	# false:设置中文路径名称不转义显示
+	quotepath = false
+[diff]
+	# 设置diff工具名称
+	tool = bc4
+[difftool]
+	prompt = true
+[difftool "bc4"]
+	# 配置bc4 diff工具路径
+	path = D:/DevelopProgram/BeyondCompare/BeyondCompare_v4.4.2.26348/BComp.exe
+[merge]
+	# 配置merge工具名称
+	tool = bc4
+[mergetool]
+	prompt = true
+[mergetool "bc4"]
+	# 设置bc4 merge工具路径
+	path = D:/DevelopProgram/BeyondCompare/BeyondCompare_v4.4.2.26348/BComp.exe

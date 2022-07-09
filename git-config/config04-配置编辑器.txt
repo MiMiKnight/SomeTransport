@@ -5,5 +5,8 @@
 ## 配置Notepad++为默认编辑器
 
 ## 配置VSCode为默认编辑器
-前提：给VSCode配置环境变量
+前提：VSCode配置环境变量
+# 配置相对路径
 git config --global core.editor Code
+# 配置绝对路径
+git config --global core.editor "D:/DevelopProgram/VSCode/VSCode-win32-x64-1.69.0/Code.exe --extensions-dir E:/SoftWorspace/VSCodeExtensions"
