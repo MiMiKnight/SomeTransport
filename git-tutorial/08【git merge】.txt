@@ -1,0 +1,7 @@
+# git merge操作
+默认的gitmerge不带有参数是fast-farward合并
+
+## 非fast-farward merge操作
+git merge --no-ff
+
+## git merge --squash

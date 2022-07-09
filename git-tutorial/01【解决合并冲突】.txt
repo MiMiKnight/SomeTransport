@@ -1,0 +1,10 @@
+# 解决代码合并冲突
+
+## 1、标准步骤
+pull => (conflict) => add => commit => push
+fetch => merge => (conflict) => add => commit => push
+或者
+add => commit => pull => (conflict) => push
+add => commit => fetch => merge => (conflict) => add => commit => push
+
+## 2、
