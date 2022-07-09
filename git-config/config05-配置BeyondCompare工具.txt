@@ -1,0 +1,29 @@
+# 配置 diff merge工具
+
+## 查看电脑当前系统支持的git diff/git merge插件
+git difftool --tool-help
+git mergetool --tool-help
+
+## 配置 Beyond Compare为Diff和Merge工具
+
+前提：配置Beyond Compare环境变量
+
+## 配置Diff Tool
+git config --global diff.tool bc4
+git config --global difftool.bc4.path "bcomp.exe的路径
+
+## 配置Merge Tool
+
+git config --global merge.tool bc4
+git config --global mergetool.bc4.path "bcomp.exe的路径"
+
+## 案例
+git config --global diff.tool bc4
+git config --global difftool.bc4.path "BComp.exe"
+
+git config --global merge.tool bc4
+git config --global mergetool.bc4.path "BComp.exe"
+
+## 解决提示"Launch ‘bc’ [Y/n]?"问题
+临时解决办法：使用git difftool -y
+永久解决办法：git config --global --add difftool.prompt false

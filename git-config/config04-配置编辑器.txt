@@ -1,0 +1,9 @@
+# 配置默认编辑器
+
+## 配置Vim为默认编辑器
+
+## 配置Notepad++为默认编辑器
+
+## 配置VSCode为默认编辑器
+前提：给VSCode配置环境变量
+git config --global core.editor Code

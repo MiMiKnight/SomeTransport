@@ -41,7 +41,7 @@ Host gitee.com
     IdentityFile ~/.ssh/gitee-id-rsa
 ============================================================
 
-# 使用 ssh -T 测试配置是否成功
+# 使用 ssh -T 测试配置是否成功(下方域名指的是配置Host别名)
 ssh -T git@github.com
 ssh -T git@gitee.com
 ssh -T git@gitlab.com
