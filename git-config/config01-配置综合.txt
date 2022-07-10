@@ -31,8 +31,10 @@ git config --global core.editor Code
 git config --global diff.tool bc4
 git config --global difftool.bc4.path "BComp.exe"
 # merge工具
-git config --global merge.tool bc4
+git config --global merge.tool bc4+  
 git config --global mergetool.bc4.path "BComp.exe"
+# 合并代码不生成.orig备份文件
+git config --global mergetool.keepBackup false
 
 ## 配置中文显示
 git config --global core.quotepath false

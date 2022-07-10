@@ -1,0 +1,9 @@
+# IntelliJ IDEA
+*.iml
+.idea/
+
+# Git
+*.orig
+
+# Project
+target/

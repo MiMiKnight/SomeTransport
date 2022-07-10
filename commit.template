@@ -1,3 +1,5 @@
 【关联单号】
 【修改类型】
 【提交描述】
+#【关联单号】规则：日期+编号
+#【修改类型】类型：[Feature] [Optimize] [Refactor] [Test] [Revert] [Merge] [Conflict Merge] [FixBug] [Style] [Docs] [Shell]
