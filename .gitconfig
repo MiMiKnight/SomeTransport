@@ -9,17 +9,26 @@
 [alias] # 给git命令起别名
 	# 只显示最近的一次提交记录命令别名设置
 	last = log -1
+	# 显示提交记录图
 	graph = log --graph --all
+	# merge noff
 	mergenoff = merge --no-ff
-	mergeSquash = merge --squash  
+	# merge squash
+	mergeSquash = merge --squash
+	# add全部
 	addall = add --all .
+	# commit全部
 	commitall = commit --all
+	# amend
+	commitamend = commit --amend
 	# 查看当前工作区代码与当前暂存区的差异
 	diffWorkStage = difftool
 	# 查看当前工作区代码与当前版本库的差异
 	diffWorkHead = difftool HEAD
 	# 查看当前暂存区与当前版本库之间的差异
 	diffStageHead = difftool --cached HEAD
+	# 分支重命名
+	renameBranch = branch -m
 [core]
 	# 设置git默认编辑器
 	editor = D:/DevelopProgram/VSCode/VSCode-win32-x64-1.69.0/Code.exe --extensions-dir E:/SoftWorspace/VSCodeExtensions
