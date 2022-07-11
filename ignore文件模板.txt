@@ -1,9 +1,23 @@
 # IntelliJ IDEA
 *.iml
+*.jar
+*.war
+*.class
 .idea/
+out/
+
+# VSCode
+.vscode/
+
+# NodeJS
+node_modules/
 
 # Git
 *.orig
 
 # Project
 target/
+*.log
+
+# 自定义
+MyNotes/
