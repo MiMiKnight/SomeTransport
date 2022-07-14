@@ -7,4 +7,7 @@ fetch => merge => (conflict) => add => commit => push
 add => commit => pull => (conflict) => push
 add => commit => fetch => merge => (conflict) => add => commit => push
 
+推荐
+add => commit => fetch => merge => (conflict) => mergetool => add => commit => push              
+
 ## 2、
