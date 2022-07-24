@@ -7,10 +7,10 @@
     <!--本工程-->
     <groupId>cn.yhm.developer</groupId>
     <artifactId>developer-springcloud-foundation</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <packaging>pom</packaging>
     <name>developer-springcloud-foundation</name>
-    <description>开发者SpringCloud微服务架构统一依赖管理</description>
+    <description>开发者SpringCloud微服务架构的统一依赖管理</description>
 
     <!--版本号-->
     <properties>
@@ -45,6 +45,8 @@
         <easyexcel.version>3.1.1</easyexcel.version>
         <!--jackson-->
         <jackson.version>2.13.3</jackson.version>
+        <!--jackson-datatype-jsr310-->
+        <jackson-datatype-jsr310.version>2.13.3</jackson-datatype-jsr310.version>
         <!--hutool-all-->
         <hutool-all.version>5.8.4</hutool-all.version>
         <!--maven-compiler-plugin-->
@@ -171,6 +173,12 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-annotations</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+            <!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.datatype/jackson-datatype-jsr310 -->
+            <dependency>
+                <groupId>com.fasterxml.jackson.datatype</groupId>
+                <artifactId>jackson-datatype-jsr310</artifactId>
+                <version>${jackson-datatype-jsr310.version}</version>
             </dependency>
             <!-- https://mvnrepository.com/artifact/cn.hutool/hutool-all -->
             <dependency>
