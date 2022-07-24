@@ -1,0 +1,3 @@
+# v1.0.0
+1、升级SpringBoot、SpringCloud、SpringCloudAlibaba最新兼容版本[SpringBoot:2.6.3,SrpingCloud:2021.0.1,SpringCloudAlibaba:2021.0.1.0]
+2、新增[jackson-datatype-jsr310]依赖,用于Jackson支持Java8新增日期类型（例如：LocalDateTime等）
