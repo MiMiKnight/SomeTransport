@@ -1,0 +1,29 @@
+# 搜索语法
+
+# 搜索全部
+get forum_index/_search
+{
+	"query":{
+		"match_all":{}
+	}
+}
+
+# 指定字段搜索
+get forum_index/_search
+{
+	"query":{
+		"match":{
+			"post_title":"测试回复贴20221114"
+		}
+	}
+}
+
+# 短语查询(搜索结果必须完全匹配才能查询到)
+get forum_index/_search
+{
+	"query":{
+		"match_phrase":{
+			"post_title":"测试回复贴20221114"
+		}
+	}
+}

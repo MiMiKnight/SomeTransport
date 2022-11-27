@@ -1,0 +1,92 @@
+ 分词器和标准化处理
+
+"standard analyzer"：标准分词器 
+"simple analyzer"：简单分词器
+"whitespace analyzer"：空白符号分词器
+"language analyzer":语言分词器
+
+# IK分词需要额外安装插件
+IK分词器：
+	# 对文本做细粒度分词
+	ik_max_word:
+	# 对文本做粗粒度分词
+	ik_smart:
+ 
+# 测试使用标准分词器
+get _analyze
+{
+	"text":"I am a chinese",
+	"analyzer":"standard"
+}
+
+# 使用IK分词器
+get _analyze
+{
+	"text":"I am a chinese",
+	"analyzer":"ik_max_word"
+}
+
+# mapping问题
+
+1、mapping生效后不允许修改，创建索引时指定mapping关系
+2、text和keyword的区别
+3、mapping在elasticsearch中是一个非常重要的概念，
+   决定了一个index中的field使用什么数据类型存储，使用什么分词器解析，是否有子字段等。
+4、如果没有配置mapping，text类型属性默认使用"standard分词器"，如果希望使用IK分词器则必须自定义配置mapping
+5、只有text类型才被允许分词，其他类型不允许设置分词
+
+类型：
+文本：text（默认）
+整数：byte、short、integer、long（默认）
+浮点型：float、double（默认）
+布尔：boolean
+日期：date
+数组：array {a:[]}
+对象：Object {}
+不分词的字符串（关键字）：keyword
+
+# 查询mapping关系
+get forum_index/_mappings
+
+# 创建索引时指定mapping
+put forum_index
+{
+	"mappings":{
+		"properties":{
+			"post_id":{
+				"type":"keyword"
+			},
+			"post_title":{
+				"type":"text",
+				"analyzer":"ik_max_word"
+			},
+			"like":{
+				"type":"long"
+			}
+		}
+	}
+}
+
+# 为已经存在索引的新增字段设置mapping关系
+put forum_index/_mapping
+{
+	"properties":{
+		"post_id":{
+			"type":"keyword"
+		},
+		"post_title":{
+			"type":"text",
+			"analyzer":"ik_max_word"
+		},
+		"like":{
+			"type":"long"
+		}
+	}
+}
+  
+# 查看已存在索引的已存在字段的在指定内容情况下分词结果
+get forum_index/_analyze
+{
+	"field":"post_id",
+	"text":"11226687"
+}

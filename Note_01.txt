@@ -1,0 +1,151 @@
+# 概念
+1、索引（Index）相当于数据库中的表
+2、文档（Document）相当于数据表中的一条记录
+
+索引名必须小写且不能以下划线(_)开头
+
+ElasticSearch7.x以后默认创建1个主分片并为每个主分片创建1个副本分片
+
+
+# 命令
+## 查看所有索引
+get _cat/indices
+
+## 查看所有分片
+get _cat/shards
+
+# 创建索引（Index）
+## 创建forum_index索引（默认创建1个主分片并为每个主分片创建1个副本分片,共计2个分片）
+put forum_index
+
+## 查看指定索引下的全部搜索结果
+get forum_index/_search
+
+## 创建forum_index索引并配置初始化分片数量
+（2个主分片，每个主分片拥有3个副本分片，共计：2+3+3=8个分片）
+put forum_index
+{
+	"settings":{
+		"number_of_shards":2,
+		"number_of_replicas":3,
+	}
+}
+
+## 修改索引分片
+put forum_index/_settings
+{
+	"number_of_shards":2,
+	"number_of_replicas":3,
+}
+
+## 删除索引
+delete forum_index
+
+
+# 创建文档（Document）
+
+## 方式1：手动指定ID新增Document（该方式：如果不存在则新增，如果ID存在则全量替换）
+put forum_index/_doc/485
+{
+	"name":"李四",
+	"hobby":"足球"
+}
+
+put forum_index/_doc/566
+{
+	"name":"张三",
+	"hobby":"羽毛球"
+}
+
+## 方式2：手动指定ID新增Document（该方式：如果不存在则新增，如果ID存在则报错）
+put forum_index/_create/5
+{
+	"name":"李四",
+	"hobby":"足球"
+}
+
+put forum_index/_create/6
+{
+	"name":"张三",
+	"hobby":"羽毛球"
+}
+
+##方式2：自动生成ID方式新增Document
+post forum_index/_doc
+{
+	"name":"李四",
+	"hobby":"足球"
+}
+
+# 搜索文档
+## 指定ID搜索
+get forum_index/_doc/2
+
+## 批量查询（推荐）
+get forum_index/_mget
+{
+	"docs":[
+		{
+			"_id":458
+		},
+		{
+			"_id":878
+		}
+	]
+}
+
+# 更新文档
+## 更新指定ID的部分数据
+post forum_index/_update/458
+{
+	"doc":{
+		"name":"王强",
+		"age":18
+	}
+}
+
+# 删除文档
+## 删除指定ID的文档
+delete forum_index/_doc/458
+
+# bulk批量 增、删、改 (大括号不允许换行)
+
+## bulk新增 create方式为强制新增
+post _bulk
+{"create":{"_index":"forum_index","_id":"458"}}
+{"name":"王红","age":19}
+
+## bulk新增 普通新增方式创建文档或者全量替换
+post _bulk
+{"index":{"_index":"forum_index","_id":"458"}}
+{"name":"王红","age":19}
+
+
+## bulk更新
+post _bulk
+{"update":{"_index":"forum_index","_id":"458"}}
+{"doc":{"age":21}}
+
+## bulk删除
+post _bulk
+{"delete":{"_index":"forum_index","_id":"458"}}
+
+## bulk多操作批量执行（强制新增501文档，普通新增502文档）
+post _bulk
+{"create":{"_index":"forum_index","_id":"501"}}
+{"name":"王红","age":19}
+{"index":{"_index":"forum_index","_id":"502"}}
+{"name":"王红","age":19}
+
+
+
+
+
+
+
+
+
+
+
+
+
