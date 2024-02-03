@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<settings xmlns="http://maven.apache.org/SETTINGS/1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.2.0 https://maven.apache.org/xsd/settings-1.2.0.xsd">
+    <!-- 仓库优先级为：本地仓库(localRepositories) > profile中的repositories仓库 > 项目中POM定义的仓库 > mirrors全局仓库 -->
+    <!-- 配置优先级为：pom.xml > user settings > global settings -->
+
+    <!--本地仓库位置-->
+    <localRepository>E:/SoftWorkspace/MavenRepository</localRepository>
+
+    <!--互动模式，默认：true-->
+    <interactiveMode>true</interactiveMode>
+
+    <!--离线模式，默认：false-->
+    <offline>false</offline>
+
+    <!-- pluginGroups
+     | This is a list of additional group identifiers that will be searched when resolving plugins by their prefix, i.e.
+     | when invoking a command line like "mvn prefix:goal". Maven will automatically add the group identifiers
+     | "org.apache.maven.plugins" and "org.codehaus.mojo" if these are not already contained in the list.
+     |-->
+    <pluginGroups>
+        <!-- pluginGroup
+         | Specifies a further group identifier to use for plugin lookup.
+        <pluginGroup>com.your.plugins</pluginGroup>
+        -->
+    </pluginGroups>
+
+    <!-- proxies
+     | This is a list of proxies which can be used on this machine to connect to the network.
+     | Unless otherwise specified (by system property or command-line switch), the first proxy
+     | specification in this list marked as active will be used.
+     |-->
+    <proxies>
+        <!-- proxy
+         | Specification for one proxy, to be used in connecting to the network.
+         |
+        <proxy>
+          <id>optional</id>
+          <active>true</active>
+          <protocol>http</protocol>
+          <username>proxyuser</username>
+          <password>proxypass</password>
+          <host>proxy.host.net</host>
+          <port>80</port>
+          <nonProxyHosts>local.net|some.host.com</nonProxyHosts>
+        </proxy>
+        victor2015yhm@gmail.com
+        -->
+    </proxies>
+
+    <servers>
+        <server>
+            <id>nexus-maven-public</id>
+            <username>victor2015yhm@gmail.com</username>
+            <password>123456</password>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+        </server>
+        <server>
+            <id>nexus-maven-releases</id>
+            <username>victor2015yhm@gmail.com</username>
+            <password>123456</password>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+        </server>
+        <server>
+            <id>nexus-maven-snapshots</id>
+            <username>victor2015yhm@gmail.com</username>
+            <password>123456</password>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+        </server>
+        <server>
+            <id>nexus-maven-public-public</id>
+            <username>victor2015yhm@gmail.com</username>
+            <password>123456</password>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+        </server>
+        <server>
+            <id>nexus-maven-plugin-releases</id>
+            <username>victor2015yhm@gmail.com</username>
+            <password>123456</password>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+        </server>
+        <server>
+            <id>nexus-maven-public-snapshots</id>
+            <username>victor2015yhm@gmail.com</username>
+            <password>123456</password>
+            <filePermissions>664</filePermissions>
+            <directoryPermissions>775</directoryPermissions>
+        </server>
+    </servers>
+
+    <mirrors>
+        <!--阿里云镜像地址
+        <mirror>
+          <id>aliyunmaven</id>
+          <mirrorOf>*</mirrorOf>
+          <name>阿里云公共仓库</name>
+          <url>https://maven.aliyun.com/repository/public</url>
+        </mirror>
+		-->
+        <!--华为镜像地址
+        <mirror>
+          <id>huaweicloud</id>
+          <mirrorOf>*</mirrorOf>
+          <url>https://mirrors.huaweicloud.com/repository/maven/</url>
+        </mirror>
+        -->
+    </mirrors>
+
+    <profiles>
+        <!-- JDK8 -->
+        <profile>
+            <id>jdk8</id>
+            <activation>
+                <jdk>1.8.0_202</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>1.8</maven.compiler.source>
+                <maven.compiler.target>1.8</maven.compiler.target>
+               <maven.compiler.version>1.8</maven.compiler.version>
+            </properties>
+        </profile>
+        <!-- JDK17 -->
+        <profile>
+            <id>jdk17</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+                <jdk>17.0.8</jdk>
+            </activation>
+            <properties>
+                <maven.compiler.source>17</maven.compiler.source>
+                <maven.compiler.target>17</maven.compiler.target>
+                <maven.compiler.version>17</maven.compiler.version>
+            </properties>
+        </profile>
+        <!--project-environment-->
+        <profile>
+            <id>project-environment</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <!--项目编码-->
+                <project.encoding>UTF-8</project.encoding>
+                <!--项目源码编码-->
+                <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+                <!--项目输出编码-->
+                <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+                <!--oracle jdk vendor-->
+                <jdk.vendor.oracle>Oracle Corporation</jdk.vendor.oracle>
+                <!--JDK 最低版本-->
+                <jdk.min.version>17.0.8</jdk.min.version>
+                <!--JDK 最高版本-->
+                <jdk.max.version>17.0.8</jdk.max.version>
+                <!--Maven 最低版本-->
+                <maven.min.version>3.9.0</maven.min.version>
+                <!--Maven 最高版本-->
+                <maven.max.version>3.9.4</maven.max.version>
+                <!--构建打包时间戳格式-->
+                <maven.build.timestamp.format>yyyyMMddHHmmssSSS</maven.build.timestamp.format>
+            </properties>
+        </profile>
+        <!--nexus-repository-->
+        <profile>
+            <id>nexus-repository</id>
+            <!-- Repository -->
+            <repositories>
+                <repository>
+                    <id>nexus-maven-public</id>
+                    <name>Public Repository</name>
+                    <url>http://www.nexus.mimiknight.cn/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>nexus-maven-releases</id>
+                    <name>Releases Repository</name>
+                    <url>http://www.nexus.mimiknight.cn/repository/maven-releases/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </repository>
+                <repository>
+                    <id>nexus-maven-snapshots</id>
+                    <name>Snapshot Repository</name>
+                    <url>http://www.nexus.mimiknight.cn/repository/maven-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </repository>
+            </repositories>
+            <!-- PluginRepository -->
+            <pluginRepositories>
+                <pluginRepository>
+                    <id>nexus-maven-plugin-public</id>
+                    <name>Public Repository</name>
+                    <url>http://www.nexus.mimiknight.cn/repository/maven-public/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>nexus-maven-plugin-releases</id>
+                    <name>Releases Repository</name>
+                    <url>http://www.nexus.mimiknight.cn/repository/maven-releases/</url>
+                    <releases>
+                        <enabled>true</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>false</enabled>
+                    </snapshots>
+                </pluginRepository>
+                <pluginRepository>
+                    <id>nexus-maven-plugin-snapshots</id>
+                    <name>Snapshot Repository</name>
+                    <url>http://www.nexus.mimiknight.cn/repository/maven-snapshots/</url>
+                    <releases>
+                        <enabled>false</enabled>
+                    </releases>
+                    <snapshots>
+                        <enabled>true</enabled>
+                    </snapshots>
+                </pluginRepository>
+            </pluginRepositories>
+        </profile>
+    </profiles>
+
+    <activeProfiles>
+        <activeProfile>jdk17</activeProfile>
+        <activeProfile>project-environment</activeProfile>
+        <activeProfile>nexus-repository</activeProfile>
+    </activeProfiles>
+
+</settings>
